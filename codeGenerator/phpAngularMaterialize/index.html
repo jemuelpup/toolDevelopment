@@ -12,10 +12,55 @@
 		<div ng-controller="codeGen">
 			<h1>This is a Heading</h1>
 			<p>To use this code generator, you need materialize 1.0 alpha and angular 1. HTML must be html 5.</p>
-			<p>This is a paragraph.</p>
+			<p>copy the template folder in making a project</p>
+		
+
+			<div class="queryinput">
+				<p>Input the create query here</p>
+				<input type="text" class="createQueryText" ng-model="createQuery">
+				<button class="generate-code" ng-click="generateCode()">Generate</button>
+				<p>to remove a field in query table, just remove the whole line</p>
+			</div>
+			<div class="row">
+				<h2>Input generator</h2>
+				<div class="w50p">
+					<div class="code-snippet input-snippet">
+						input fields here
+					</div>
+				</div>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Table generator</h2>
+				<div class="w50p">
+					<div class="code-snippet data-table">
+						table here
+					</div>
+				</div>
+				<div class="w50p">
+					<textarea name="code" id="data-table-code" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Views php code</h2>
+				<textarea name="code" class="view-data-table-function" cols="30" rows="10"></textarea>
+			</div>
+			<div class="row">
+				<h2>Views update modal code</h2>
+				<textarea name="codeModalUpdate" class="views-update-modal-code" cols="30" rows="10"></textarea>
+			</div>
 		</div>
+
 	</div>
+
+	
+
+
+
 	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/modules.js"></script>
+	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/services.js"></script>
 	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/controller.js"></script>
 </body>
 

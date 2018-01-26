@@ -1,9 +1,10 @@
 <?php
+/* This file contains the elements for viewing */
 
+include $_SERVER['DOCUMENT_ROOT'].'/common/commonfunctions.php';
 require $_SERVER['DOCUMENT_ROOT'].'/common/dbconnect.php';
-session_start();
+
 $process="";
-$data = "";
 
 if(isset($_POST['process'])){
 	$process = $_POST['process'];
@@ -16,39 +17,25 @@ else{
 }
 
 switch($process){
-	case "FunctionName":{
-		functionName($conn,$data);
+	case "selectFunctionName":{
+		selectFunctionName($conn);
+	}
+	case "selectFunctionNameWCond":{
+		selectFunctionNameWCond($conn,$data);
 	}
 }
 
-function functionName($c,$d){
-	//sample codes inside the function
-	$sql = $c->prepare("INSERT INTO category_tbl (name,category_code,description) VALUES (?,?,?)");
-	$sql->bind_param('sss',$d->name,$d->category_code,$d->description);
-	$msg = ($sql->execute() === TRUE) ? "Adding new Category success" : "Error: " . $sql . "<br>" . $c->error;
+// selectItemCategory($conn);
+function selectFunctionName($c){
+	$sql = "SELECT id,name,category_code,description FROM category_tbl WHERE active = 1";
+	print_r(hasRows($c,$sql) ? json_encode(selectQuery($c,$sql)) : "");
 }
 
-
-/* 
-reusable functions - optional
-*/
-
-
-function validateData($d){
-	if(isset($d)){
-		return $d;
-	}
-	return "";
+/* This function needs some edit*/
+function selectFunctionNameWCond($c,$d){
+	$sql = "SELECT id,name,category_code,description FROM category_tbl WHERE active = 1 and name = $d->name";// add security here
+	print_r(hasRows($c,$sql) ? json_encode(selectQuery($c,$sql)) : "");
 }
-function validateDate($d){
-	if(isset($d)){
-		return date("Y-m-d", strtotime(str_replace('/', '-',$d)));
-	}
-	return "0000-00-00";
-}
-/**************************************************************************/
-
-
 
 
 ?>

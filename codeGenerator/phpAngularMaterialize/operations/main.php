@@ -21,11 +21,11 @@ class MainFunct{
 		/* use generator functions */
 
 		echo "{
-			\"\":\"".$this->qg->generatePSInsertQueries($structuredData,$tableName)."\",
-			\"\":\"".$this->qg->generatePSUpdateQueries($structuredData,$tableName)."\",
-			\"\":\"".$this->HTML->generateInsertForm($structuredData,$tableName,"")."\",
-			\"\":\"".$this->HTML->generateModalUpdateForm($structuredData,$tableName,$prefix)."\",
-			\"\":\"".$this->HTML->generateTableData($structuredData,$tableName,$prefix)."\",
+			\"insertQuery\":\"".$this->qg->generatePSInsertQueries($structuredData,$tableName)."\",
+			\"updateQuery\":\"".$this->qg->generatePSUpdateQueries($structuredData,$tableName)."\",
+			\"htmlForm\":\"".$this->HTML->generateInsertForm($structuredData,$tableName,"")."\",
+			\"updateModal\":\"".$this->HTML->generateModalUpdateForm($structuredData,$tableName,$prefix)."\",
+			\"tableData\":\"".$this->HTML->generateTableData($structuredData,$tableName,$prefix)."\",
 		}";
 	}
 
@@ -44,6 +44,31 @@ class MainFunct{
 	}
 }
 
+$main = new MainFunct();
+
+
+$process="";
+$data = "";
+
+if(isset($_POST['process'])){
+	$process = $_POST['process'];
+}
+else{
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	$process = $request->process;
+	$data = $request->data;
+}
+
+switch($process){
+	case "generateCode":{
+		 
+		$main->generate($data,"edit-");
+	}
+}
+
+
+
 $q = "CREATE TABLE IF NOT EXISTS `employee_tbl` (
 `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -60,8 +85,7 @@ $q = "CREATE TABLE IF NOT EXISTS `employee_tbl` (
   `gender` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;";
 
-$main = new MainFunct();
-$main->generate($q,"edit-");
+
 
 
 ?>

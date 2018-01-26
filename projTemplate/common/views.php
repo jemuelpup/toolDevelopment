@@ -26,6 +26,7 @@ function functionName($c,$d){
 	$sql = $c->prepare("INSERT INTO category_tbl (name,category_code,description) VALUES (?,?,?)");
 	$sql->bind_param('sss',$d->name,$d->category_code,$d->description);
 	$msg = ($sql->execute() === TRUE) ? "Adding new Category success" : "Error: " . $sql . "<br>" . $c->error;
+	$sql->close();
 }
 
 ?>

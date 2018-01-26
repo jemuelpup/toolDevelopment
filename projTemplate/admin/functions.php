@@ -42,14 +42,16 @@ function insertFunctionName($c,$d){
 	$sql = $c->prepare("INSERT INTO category_tbl (name,category_code,description) VALUES (?,?,?)");
 	$sql->bind_param('sss',$d->name,$d->category_code,$d->description);
 	$msg = ($sql->execute() === TRUE) ? "Adding new Category success" : "Error: " . $sql . "<br>" . $c->error;
+	$sql->close();
 }
 
 // update function block
 function updateFunctionName($c,$d){
 	//sample codes inside the function
-	$sql = $c->prepare("INSERT INTO category_tbl (name,category_code,description) VALUES (?,?,?)");
-	$sql->bind_param('sss',$d->name,$d->category_code,$d->description);
-	$msg = ($sql->execute() === TRUE) ? "Adding new Category success" : "Error: " . $sql . "<br>" . $c->error;
+	$sql = $c->prepare("UPDATE order_tbl SET cashier_fk = ? ,payment = ?,received_date = NOW() WHERE id = ?");
+	$sql->bind_param('idi', $_SESSION["employeeID"], validateData($d->cash), validateData($d->id));
+	$msg = ($sql->execute() === TRUE) ? "Setting order paid success" : "Error: " . $sql . "<br>" . $c->error;
+	$sql->close();
 }
 
 
