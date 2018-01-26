@@ -1,0 +1,15 @@
+/* Variables */
+/* Mixins */
+.example {
+  background: #000; }
+
+.orange {
+  background: #fff;
+  font-size: 20px; }
+
+.sampleTextArea {
+  background-color: #34FF72; }
+
+.sampleText {
+  color: #B20C09;
+  padding: 40px 20px; }

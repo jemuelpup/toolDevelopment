@@ -1,0 +1,1 @@
+var cg = angular.module("cg",[]);

@@ -1,0 +1,25 @@
+/* Variables */
+$darkRed: #B20C09;
+$midRed: #FF3634;
+$lightRed: #FF4F4D;
+$darkGreen: #00B237;
+$lightGreen: #34FF72;
+
+
+
+/* Mixins */
+
+.example{
+	background: #000;
+}
+.orange{
+	background: #fff;
+	font-size: 20px;
+}
+.sampleTextArea{
+	background-color: $lightGreen;
+}
+.sampleText{
+	color: $darkRed;
+	padding: 40px 20px;
+}
