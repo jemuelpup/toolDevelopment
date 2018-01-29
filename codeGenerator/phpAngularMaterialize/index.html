@@ -4,6 +4,7 @@
 <head>
 	<title>Page Title</title>
 	<link rel="stylesheet" href="/codeGenerator/phpAngularMaterialize/plugins/materialize-src/css/materialize.css">
+	<link rel="stylesheet" href="/codeGenerator/phpAngularMaterialize/common/css/style.css">
 	<script src="/codeGenerator/phpAngularMaterialize/plugins/angular.min.js"></script>
 </head>
 
@@ -13,43 +14,72 @@
 			<h1>This is a Heading</h1>
 			<p>To use this code generator, you need materialize 1.0 alpha and angular 1. HTML must be html 5.</p>
 			<p>copy the template folder in making a project</p>
-		
-
+			<p>to remove a field in query table, just remove the whole line</p>
 			<div class="queryinput">
 				<p>Input the create query here</p>
-				<input type="text" class="createQueryText" ng-model="createQuery">
-				<button class="generate-code" ng-click="generateCode()">Generate</button>
-				<p>to remove a field in query table, just remove the whole line</p>
-			</div>
-			<div class="row">
-				<h2>Input generator</h2>
-				<div class="w50p">
-					<div class="code-snippet input-snippet">
-						input fields here
-					</div>
-				</div>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10"></textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h2>Table generator</h2>
-				<div class="w50p">
-					<div class="code-snippet data-table">
-						table here
-					</div>
-				</div>
-				<div class="w50p">
-					<textarea name="code" id="data-table-code" cols="30" rows="10"></textarea>
+				<div class="row">
+					<form ng-submit="generateCode()">
+						<div class="col s8">
+							<input type="text" class="createQueryText" ng-model="createQuery" placeholder="Create query" required>
+						</div>
+						<div class="col s4">
+							<input type="text" class="createQueryText" ng-model="prefix" placeholder="Prefix" required>
+						</div>
+						<div class="col s12">
+							<button class="generate-code" type="submit">Generate</button>
+						</div>
+					</form>
+					
 				</div>
 			</div>
 			<div class="row">
-				<h2>Views php code</h2>
-				<textarea name="code" class="view-data-table-function" cols="30" rows="10"></textarea>
+				<h2>Insert query generated</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{insertQuery}}</textarea>
+				</div>
 			</div>
 			<div class="row">
-				<h2>Views update modal code</h2>
-				<textarea name="codeModalUpdate" class="views-update-modal-code" cols="30" rows="10"></textarea>
+				<h2>Update query generated</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{updateQuery}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Input form generated</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{htmlForm}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Input form generated</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{updateModal}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>Input form generated</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{tableData}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>PHP function insert/update</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{phpInsertFunction}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h2>PHP function switch</h2>
+				<p>input fields here</p>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+				</div>
 			</div>
 		</div>
 

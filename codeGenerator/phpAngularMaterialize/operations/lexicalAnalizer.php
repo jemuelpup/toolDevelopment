@@ -19,6 +19,7 @@ class LexicalAnalizer{
       $sqlParts = $m[0];
     }
     $sqlParts = substr(trim(preg_replace('!\s+!', ' ', $sqlParts)),1,strlen($sqlParts)-2);// get the fields
+    $sqlParts = str_replace(", ", ",", trim($sqlParts));
     return $sqlParts;
   }
   // finite state machine
