@@ -2,10 +2,10 @@
 
 class CodeGeneratorPHP{
 	public function generatePHPFuncInsertUpdate($tableName){
-		return "function insert".ucfirst($tableName)."(\$c,\$d){}function update".ucfirst($tableName)."(\$c,\$d){}";
+		return "function insert".ucfirst(str_replace("_tbl", "", $tableName))."(\$c,\$d){}function update".ucfirst(str_replace("_tbl", "", $tableName))."(\$c,\$d){}";
 	}
 	public function generatePHPSwitchCase($tableName){
-		return "case \"Add".ucfirst($tableName)."\":{insert".ucfirst($tableName)."(\$conn,\$data);}break;case \"Edit".ucfirst($tableName)."\":{update".ucfirst($tableName)."(\$conn,\$data);}break;";
+		return "case \"Add".ucfirst(str_replace("_tbl", "", $tableName))."\":{insert".ucfirst(str_replace("_tbl", "", $tableName))."(\$conn,\$data);}break;case \"Edit".ucfirst(str_replace("_tbl", "", $tableName))."\":{update".ucfirst(str_replace("_tbl", "", $tableName))."(\$conn,\$data);}break;";
 	}
 
 

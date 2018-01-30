@@ -8,13 +8,14 @@ class QueryGenerator{
 		$variables = "";
 		foreach ($dataArray as $data) {
 			$fields .= $data["variableName"].",";
-			$values .= "?";
+			$values .= "?,";
 			$bindParam .= $this->getBindParam($data["dataType"]);
 			$variables .= '$d->'.$data["variableName"].",";
 		}
+		$values = substr($values, 0,-1);
 		$fields = substr($fields,0,-1);
 		$variables = substr($variables,0,-1);
-		return "$query($fields)VALUES($values); \$sql->bind_param('$bindParam',$variables);";
+		return "\$sql = \$c->prepare(\"$query($fields)VALUES($values)\"); \$sql->bind_param('$bindParam',$variables);";
 	}
 	public function generatePSUpdateQueries($dataArray,$tableName){
 		$query = "UPDATE $tableName SET";
@@ -28,7 +29,7 @@ class QueryGenerator{
 		}
 		$fields = substr($fields,0,-2);
 		$variables = substr($variables,0,-1);
-		return "$query $fields; \$sql->bind_param('$bindParam',$variables);";
+		return "\$sql = \$c->prepare(\"$query $fields\"); \$sql->bind_param('$bindParam',$variables);";
 	}
 	public function getTableName($sql){ return str_replace("`","",explode(" ",$sql)[5]); }
 	private function getBindParam($dt){
