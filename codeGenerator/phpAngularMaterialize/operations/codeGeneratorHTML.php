@@ -42,7 +42,7 @@ class CodeGeneratorHTML{
 				<table class="data-clickable">
 				    <tbody>
 				        <tr>'.$tHead.'</tr>
-				        <tr ng-repeat="x in '.$tableName.'s" data-id="{{x.id}}" ng-click="'.$tableName.'Index($index,x.id)">'.$tData.'</tr>
+				        <tr ng-repeat="x in '.str_replace("_tbl", "", $tableName).'s" data-id="{{x.id}}" ng-click="'.str_replace("_tbl", "", $tableName).'Index($index,x.id)">'.$tData.'</tr>
 				    </tbody>
 				</table>
 			</div>
