@@ -25,7 +25,8 @@ class MainFunct{
 			"updateModal"=>$this->HTML->generateModalUpdateForm($structuredData,$tableName,$prefix),
 			"tableData"=>$this->HTML->generateTableData($structuredData,$tableName,$prefix),
 			"phpInsertFunction"=>$this->php->generatePHPFuncInsertUpdate($tableName),
-			"generatePHPSwitchCase"=>$this->php->generatePHPSwitchCase($tableName)
+			"generatePHPSwitchCase"=>$this->php->generatePHPSwitchCase($tableName),
+			"selectQuery"=>$this->qg->generatePSSelectQueries($structuredData,$tableName)
 		);
 		print_r(json_encode($generatedData));
 	}

@@ -1,6 +1,7 @@
 <?php
 
 class CodeGeneratorHTML{
+
 	public function generateInsertForm($dataArray,$tableName,$prefix="prefix"){
 		$code = '
 		<div class="'.$prefix.'">
@@ -15,9 +16,10 @@ class CodeGeneratorHTML{
 		return $code;
 	}
 	public function generateModalUpdateForm($dataArray,$tableName,$prefix="prefix"){
+		$tableName = str_replace("_tbl", "", $tableName);
 		$code = '
-			<div id="$id" class="modal $id">
-				<form ng-submit="editItem()">
+			<div id="'.$tableName.'" class="modal '.$tableName.'">
+				<form ng-submit="edit'.ucfirst($tableName).'()">
 					<div class="modal-content">
 						<h4>'.$prefix.$tableName.'</h4>
 						'.$this->getInputFields($dataArray,$tableName,$prefix).'
@@ -33,6 +35,7 @@ class CodeGeneratorHTML{
 	public function generateTableData($dataArray,$tableName){
 		$tHead = "";
 		$tData = "";
+		$tableName = str_replace("_tbl", "", $tableName);
 		foreach ($dataArray as $data) {
 			$tHead .= '<th>'.$data["variableName"].'</th>';
 			$tData .= '<td>{{x.'.$data["variableName"].'}}</td>';

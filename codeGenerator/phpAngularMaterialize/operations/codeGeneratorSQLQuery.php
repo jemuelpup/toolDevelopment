@@ -17,6 +17,14 @@ class QueryGenerator{
 		$variables = substr($variables,0,-1);
 		return "\$sql = \$c->prepare(\"$query($fields)VALUES($values)\"); \$sql->bind_param('$bindParam',$variables);";
 	}
+	public function generatePSSelectQueries($dataArray,$tableName){
+		$fields = "";
+		foreach ($dataArray as $data) {
+			$fields .= $data["variableName"].",";
+		}
+		$fields = substr($fields,0,-1);
+		return "\$sql = \"SELECT $fields FROM $tableName\";";
+	}
 	public function generatePSUpdateQueries($dataArray,$tableName){
 		$query = "UPDATE $tableName SET";
 		$fields = "";
