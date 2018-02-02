@@ -7,7 +7,7 @@ class CodeGeneratorHTML{
 		<div class="'.$prefix.'">
 			<h3>'.$tableName.'</h3>
 			<form action="#" ng-submit="functionName()">
-				'.$this->getInputFields($dataArray,$tableName,$prefix).'
+				'.$this->getInputFields($dataArray,$tableName,"").'
 				<button class="waves-effect waves-light btn" type="submit">Add</button>
 				<button class="waves-effect waves-light btn">Clear</button>
 			</form>
@@ -25,7 +25,7 @@ class CodeGeneratorHTML{
 						'.$this->getInputFields($dataArray,$tableName,$prefix).'
 					</div>
 					<div class="modal-footer">
-		        		<button class="waves-effect waves-light btn" type="submit" ng-click="editItem()">Update</button>
+		        		<button class="waves-effect waves-light btn" type="submit" ng-click="edit'.ucfirst($tableName).'()">Update</button>
 		        	</div>
 				</form>
 			</div>
@@ -45,7 +45,7 @@ class CodeGeneratorHTML{
 				<table class="data-clickable">
 				    <tbody>
 				        <tr>'.$tHead.'</tr>
-				        <tr ng-repeat="x in '.$tableName.'s" data-id="{{x.id}}" ng-click="'.$tableName.'Index($index,x.id)">'.$tData.'</tr>
+				        <tr ng-repeat="x in '.$tableName.'s" ng-click="'.$tableName.'Index($index)" ng-class="{\'active\': x.selected}">'.$tData.'</tr>
 				    </tbody>
 				</table>
 			</div>
@@ -53,6 +53,9 @@ class CodeGeneratorHTML{
 		return $code;
 	}
 	private function getInputFields($dataArray,$tableName,$prefix=""){
+		if(strlen($prefix)>0){
+			$tableName = ucfirst($tableName);
+		}
 		$tableName = str_replace("_tbl", "", $tableName);
 		$inputCode = "";
 		foreach ($dataArray as $data) {
