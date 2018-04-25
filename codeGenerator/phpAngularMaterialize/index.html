@@ -11,7 +11,7 @@
 <body ng-app="cg">
 	<div class="container">
 		<div ng-controller="codeGen">
-			<h1>This is a Heading</h1>
+			<h1>Code generator</h1>
 			<p>To use this code generator, you need materialize 1.0 alpha and angular 1. HTML must be html 5.</p>
 			<p>copy the template folder in making a project</p>
 			<p>to remove a field in query table, just remove the whole line</p>
@@ -33,60 +33,68 @@
 				</div>
 			</div>
 			<div class="row">
-				<h2>Select query generated</h2>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{selectQuery}}</textarea>
+				<div class="col s4">
+						<h5>Select query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{selectQuery}}</textarea>
+						</div>
+				</div>
+				<div class="col s4">
+						<h5>Insert query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{insertQuery}}</textarea>						
+					</div>
+				</div>
+				<div class="col s4">
+						<h5>Update query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{updateQuery}}</textarea>						
+					</div>
+				</div>
+				<div class="col s6">
+					<h5>Input form generated</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{htmlForm}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+					<h5>Update form generated</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{updateModal}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+				<h5>PHP function switch</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+				<h5>Angular controler code</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+					</div>
 				</div>
 			</div>
 			<div class="row">
-				<h2>Insert query generated</h2>
-				<p>input fields here</p>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{insertQuery}}</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h2>Update query generated</h2>
-				<p>input fields here</p>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{updateQuery}}</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h2>Input form generated</h2>
-				<p>input fields here</p>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{htmlForm}}</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h2>Update form generated</h2>
-				<p>input fields here</p>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{updateModal}}</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h2>Table display code generated</h2>
-				<p>input fields here</p>
+				<h5>Table display code generated</h5>
 				<div class="w50p">
 					<textarea name="code" id="code-input" cols="30" rows="10">{{tableData}}</textarea>
 				</div>
 			</div>
 			<div class="row">
-				<h2>PHP function insert/update</h2>
-				<p>input fields here</p>
+				<h5>PHP function insert/update</h5>
 				<div class="w50p">
 					<textarea name="code" id="code-input" cols="30" rows="10">{{phpInsertFunction}}</textarea>
 				</div>
 			</div>
 			<div class="row">
-				<h2>PHP function switch</h2>
-				<p>input fields here</p>
+				<h5>Angular controller code</h5>
 				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+					<textarea name="" id="" cols="30" rows="10">{{angularController}}</textarea>
 				</div>
 			</div>
+			
 		</div>
 
 	</div>

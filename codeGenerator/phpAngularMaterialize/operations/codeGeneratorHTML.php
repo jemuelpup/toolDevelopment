@@ -18,7 +18,7 @@ class CodeGeneratorHTML{
 	public function generateModalUpdateForm($dataArray,$tableName,$prefix="prefix"){
 		$tableName = str_replace("_tbl", "", $tableName);
 		$code = '
-			<div id="'.$tableName.'" class="modal '.$tableName.'">
+			<div id="edit'.ucfirst($tableName).'" class="modal edit'.ucfirst($tableName).'">
 				<form ng-submit="edit'.ucfirst($tableName).'()">
 					<div class="modal-content">
 						<h4>'.$prefix.$tableName.'</h4>

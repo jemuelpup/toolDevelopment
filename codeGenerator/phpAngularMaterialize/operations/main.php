@@ -4,6 +4,7 @@ include 'lexicalAnalizer.php';
 include 'codeGeneratorSQLQuery.php';
 include 'codeGeneratorHTML.php';
 include 'codeGeneratorPHP.php';
+include 'codeGeneratorAngular.php';
 
 class MainFunct{
 	// class variables
@@ -14,6 +15,7 @@ class MainFunct{
 		$this->qg = new QueryGenerator();
 		$this->HTML = new CodeGeneratorHTML();
 		$this->php = new CodeGeneratorPHP();
+		$this->angular = new CodeGeneratorAngular();
 		/* get the formatted data (The inputs)*/
 		$structuredData = $this->lex->getTokens($query);
 		$tableName = $this->qg->getTableName($query);
@@ -26,7 +28,8 @@ class MainFunct{
 			"tableData"=>$this->HTML->generateTableData($structuredData,$tableName,$prefix),
 			"phpInsertFunction"=>$this->php->generatePHPFuncInsertUpdate($tableName),
 			"generatePHPSwitchCase"=>$this->php->generatePHPSwitchCase($tableName),
-			"selectQuery"=>$this->qg->generatePSSelectQueries($structuredData,$tableName)
+			"selectQuery"=>$this->qg->generatePSSelectQueries($structuredData,$tableName),
+			"angularController"=>$this->angular->generateControllerCode($tableName)
 		);
 		print_r(json_encode($generatedData));
 	}

@@ -16,6 +16,7 @@ cg.controller('codeGen',function($scope,dbOperations){
 			$scope.phpInsertFunction = res.phpInsertFunction;
 			$scope.generatePHPSwitchCase = res.generatePHPSwitchCase;
 			$scope.selectQuery = res.selectQuery;
+			$scope.angularController = res.angularController;
 		});
 		
 	}
