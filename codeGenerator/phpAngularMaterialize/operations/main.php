@@ -9,7 +9,7 @@ include 'codeGeneratorAngular.php';
 class MainFunct{
 	// class variables
 	public $lex,$qg; // for lexical analizer
-	function generate($query,$prefix=""){
+	function generate($query){
 		/* instantiate class */
 		$this->lex = new LexicalAnalizer();
 		$this->qg = new QueryGenerator();
@@ -24,8 +24,8 @@ class MainFunct{
 			"insertQuery"=>$this->qg->generatePSInsertQueries($structuredData,$tableName),
 			"updateQuery"=>$this->qg->generatePSUpdateQueries($structuredData,$tableName),
 			"htmlForm"=>$this->HTML->generateInsertForm($structuredData,$tableName,""),
-			"updateModal"=>$this->HTML->generateModalUpdateForm($structuredData,$tableName,$prefix),
-			"tableData"=>$this->HTML->generateTableData($structuredData,$tableName,$prefix),
+			"updateModal"=>$this->HTML->generateModalUpdateForm($structuredData,$tableName),
+			"tableData"=>$this->HTML->generateTableData($structuredData,$tableName),
 			"phpInsertFunction"=>$this->php->generatePHPFuncInsertUpdate($tableName),
 			"generatePHPSwitchCase"=>$this->php->generatePHPSwitchCase($tableName),
 			"selectQuery"=>$this->qg->generatePSSelectQueries($structuredData,$tableName),
@@ -48,7 +48,7 @@ else{
 }
 switch($process){
 	case "generateCode":{
-		$main->generate(str_replace("\n","",$data->createQuery),validateData($data->prefix));
+		$main->generate(str_replace("\n","",$data->createQuery));
 	}
 }
 

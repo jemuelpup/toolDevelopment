@@ -12,7 +12,7 @@
 	<div class="container">
 		<div ng-controller="codeGen">
 			<h1>Code generator</h1>
-			<p>To use this code generator, you need materialize 1.0 alpha and angular 1. HTML must be html 5.</p>
+			<p>To use this code generator, you need materialize 0.100.2 and angular 1. HTML must be html 5.</p>
 			<p>copy the template folder in making a project</p>
 			<p>to remove a field in query table, just remove the whole line</p>
 			<div class="queryinput">
@@ -22,9 +22,9 @@
 						<div class="col s8">
 							<input type="text" class="createQueryText" ng-model="createQuery" placeholder="Create query" required>
 						</div>
-						<div class="col s4">
+						<!-- <div class="col s4">
 							<input type="text" class="createQueryText" ng-model="prefix" placeholder="Prefix" required>
-						</div>
+						</div> -->
 						<div class="col s12">
 							<button class="generate-code" type="submit">Generate</button>
 						</div>
@@ -70,9 +70,9 @@
 					</div>
 				</div>
 				<div class="col s6">
-				<h5>Angular controler code</h5>
+					<h5>PHP function insert/update</h5>
 					<div class="w50p">
-						<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+						<textarea name="code" id="code-input" cols="30" rows="10">{{phpInsertFunction}}</textarea>
 					</div>
 				</div>
 			</div>
@@ -80,12 +80,6 @@
 				<h5>Table display code generated</h5>
 				<div class="w50p">
 					<textarea name="code" id="code-input" cols="30" rows="10">{{tableData}}</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<h5>PHP function insert/update</h5>
-				<div class="w50p">
-					<textarea name="code" id="code-input" cols="30" rows="10">{{phpInsertFunction}}</textarea>
 				</div>
 			</div>
 			<div class="row">

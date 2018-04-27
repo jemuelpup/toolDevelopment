@@ -15,7 +15,10 @@ class QueryGenerator{
 		$values = substr($values, 0,-1);
 		$fields = substr($fields,0,-1);
 		$variables = substr($variables,0,-1);
-		return "\$sql = \$c->prepare(\"$query($fields)VALUES($values)\"); \$sql->bind_param('$bindParam',$variables);";
+		return "\$sql = \$c->prepare(\"$query($fields)VALUES($values)\");
+	\$sql->bind_param('$bindParam',$variables);
+	\$msg = (\$sql->execute() === TRUE) ? \"Adding new ".substr($tableName,0,-4)." success\" : \"Error: \" . \$sql . \"<br>\" . \$c->error;
+	\$sql->close();";
 	}
 	public function generatePSSelectQueries($dataArray,$tableName){
 		$fields = "";
@@ -37,7 +40,10 @@ class QueryGenerator{
 		}
 		$fields = substr($fields,0,-2);
 		$variables = substr($variables,0,-1);
-		return "\$sql = \$c->prepare(\"$query $fields\"); \$sql->bind_param('$bindParam',$variables);";
+		return "\$sql = \$c->prepare(\"$query $fields WHERE id = ?\");
+	\$sql->bind_param('".$bindParam."i',$variables,\$d->id);
+	\$msg = (\$sql->execute() === TRUE) ? \"Updating ".substr($tableName,0,-4)." success\" : \"Error: \" . \$sql . \"<br>\" . \$c->error;
+	\$sql->close();";
 	}
 	public function getTableName($sql){ return str_replace("`","",explode(" ",$sql)[5]); }
 	private function getBindParam($dt){

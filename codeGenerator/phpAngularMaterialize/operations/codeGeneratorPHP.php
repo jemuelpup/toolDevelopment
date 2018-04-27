@@ -2,10 +2,16 @@
 
 class CodeGeneratorPHP{
 	public function generatePHPFuncInsertUpdate($tableName){
-		return "function insert".ucfirst(str_replace("_tbl", "", $tableName))."(\$c,\$d){}function update".ucfirst(str_replace("_tbl", "", $tableName))."(\$c,\$d){}function select".ucfirst(str_replace("_tbl", "", $tableName))."(\$c){}";
+		$tableName = substr($tableName, 0, -4);
+		return "function insert".ucfirst($tableName)."(\$c,\$d){}
+		function update".ucfirst($tableName)."(\$c,\$d){}
+		function select".ucfirst($tableName)."(\$c){}";
 	}
 	public function generatePHPSwitchCase($tableName){
-		return "case \"Add".ucfirst(str_replace("_tbl", "", $tableName))."\":{insert".ucfirst(str_replace("_tbl", "", $tableName))."(\$conn,\$data);}break;case \"Edit".ucfirst(str_replace("_tbl", "", $tableName))."\":{update".ucfirst(str_replace("_tbl", "", $tableName))."(\$conn,\$data);}break;case \"Get".ucfirst(str_replace("_tbl", "", $tableName))."\":{select".ucfirst(str_replace("_tbl", "", $tableName))."(\$conn);}break;";
+		$tableName = substr($tableName, 0, -4);
+		return "case \"AddNew".ucfirst($tableName)."\":{insert".ucfirst($tableName)."(\$conn,\$data);}break;
+		case \"Edit".ucfirst($tableName)."\":{update".ucfirst($tableName)."(\$conn,\$data);}break;
+		case \"Get".ucfirst($tableName)."s\":{select".ucfirst($tableName)."(\$conn);}break;";
 	}
 
 }

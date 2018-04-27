@@ -4,8 +4,9 @@ cg.controller('codeGen',function($scope,dbOperations){
 
 
 		dbOperations.processData("generateCode",
-			{"createQuery":$scope.createQuery,
-			 "prefix":$scope.prefix}).then(function(res){
+			// {"createQuery":$scope.createQuery,
+			//  "prefix":$scope.prefix}).then(function(res){
+			{"createQuery":$scope.createQuery}).then(function(res){
 			// $
 			console.log(res);
 			$scope.insertQuery = res.insertQuery;
