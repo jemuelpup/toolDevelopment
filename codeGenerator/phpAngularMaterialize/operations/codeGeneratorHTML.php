@@ -10,7 +10,7 @@ class CodeGeneratorHTML{
 			<form action="#" ng-submit="addNew'.ucfirst($tableName).'($event)">
 				'.$this->getInputFields($dataArray,$tableName,"add").'
 				<button class="waves-effect waves-light btn" type="submit">Add</button>
-				<button class="waves-effect waves-light btn">Clear</button>
+				<button class="waves-effect waves-light btn" type="reset">Clear</button>
 			</form>
 		</div>
 		';

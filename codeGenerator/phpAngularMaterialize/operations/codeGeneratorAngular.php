@@ -16,7 +16,13 @@ class CodeGeneratorAngular{
 				$(\'.modal\').modal();
 			});
 		}
-
+		$scope.delete'.$tableName.' = function(){
+			if (confirm("Are you sure you want to delete this '.$tableName.'?")) {
+				dbOperations.processData("Remove'.$tableName.'",$scope.edit'.$tableName.'Fields).then(function(res){
+					get'.$tableName.'s();
+				});
+			}
+		}
 		$scope.'.$tableName.'Index = function(i,id){
 			$scope.edit'.ucfirst($tableName).'Fields = ($scope.'.$tableName.'s)[i];
 			$scope.selected'.ucfirst($tableName).'Index = $scope.selected'.ucfirst($tableName).'Index===i ? -1 : i;
