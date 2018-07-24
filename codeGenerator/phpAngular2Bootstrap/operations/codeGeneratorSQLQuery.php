@@ -15,7 +15,7 @@ class QueryGenerator{
 		$values = substr($values, 0,-1);
 		$fields = substr($fields,0,-1);
 		$variables = substr($variables,0,-1);
-		return "\$sql = \$c->prepare(\"$query($fields) VALUES($values)\");
+		return "\$sql = \$c->prepare(\"$query($fields)VALUES($values)\");
 	\$sql->bind_param('$bindParam',$variables);
 	\$msg = (\$sql->execute() === TRUE) ? \"Adding new ".substr($tableName,0,-4)." success\" : \"Error: \" . \$sql . \"<br>\" . \$c->error;
 	\$sql->close();";

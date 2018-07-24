@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Page Title</title>
+	<link rel="stylesheet" href="/codeGenerator/phpAngularMaterialize/plugins/materialize-src/css/materialize.css">
+	<link rel="stylesheet" href="/codeGenerator/phpAngularMaterialize/common/css/style.css">
+	<script src="/codeGenerator/phpAngularMaterialize/plugins/angular.min.js"></script>
+</head>
+
+<body ng-app="cg">
+	<div class="container">
+		<div ng-controller="codeGen">
+			<h1>Code generator</h1>
+			<p>To use this code generator, you need materialize 0.100.2 and angular 1. HTML must be html 5.</p>
+			<p>copy the template folder in making a project</p>
+			<p>to remove a field in query table, just remove the whole line</p>
+			<div class="queryinput">
+				<p>Input the create query here</p>
+				<div class="row">
+					<form ng-submit="generateCode()">
+						<div class="col s8">
+							<input type="text" class="createQueryText" ng-model="createQuery" placeholder="Create query" required>
+						</div>
+						<!-- <div class="col s4">
+							<input type="text" class="createQueryText" ng-model="prefix" placeholder="Prefix" required>
+						</div> -->
+						<div class="col s12">
+							<button class="generate-code" type="submit">Generate</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s4">
+						<h5>Select query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{selectQuery}}</textarea>
+						</div>
+				</div>
+				<div class="col s4">
+						<h5>Insert query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{insertQuery}}</textarea>						
+					</div>
+				</div>
+				<div class="col s4">
+						<h5>Update query generated</h5>
+						<div class="w50p">
+							<textarea name="code" id="code-input" cols="30" rows="10">{{updateQuery}}</textarea>						
+					</div>
+				</div>
+				<div class="col s6">
+					<h5>Input form generated</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{htmlForm}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+					<h5>Update form generated</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{updateModal}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+				<h5>PHP function switch</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{generatePHPSwitchCase}}</textarea>
+					</div>
+				</div>
+				<div class="col s6">
+					<h5>PHP function insert/update</h5>
+					<div class="w50p">
+						<textarea name="code" id="code-input" cols="30" rows="10">{{phpInsertFunction}}</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<h5>Table display code generated</h5>
+				<div class="w50p">
+					<textarea name="code" id="code-input" cols="30" rows="10">{{tableData}}</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<h5>Angular controller code</h5>
+				<div class="w50p">
+					<textarea name="" id="" cols="30" rows="10">{{angularController}}</textarea>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+	
+
+
+
+	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/modules.js"></script>
+	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/services.js"></script>
+	<script src="/codeGenerator/phpAngularMaterialize/common/angularFiles/controller.js"></script>
+</body>
+
+</html>
